@@ -3,7 +3,7 @@
     AJ Leichner
     Douglas Lundin
     CSC160-179 - Computer Science 1: Java
-    19 September 2021
+    3 October 2021
 
     A program that asks the user for a string then counts the number of vowels and consanants in it.
 
