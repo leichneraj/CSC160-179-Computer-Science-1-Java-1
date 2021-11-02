@@ -17,8 +17,8 @@ public class RandomAddition { // Gets two random numbers, adds them, then asks t
         Random random = new Random();
         Scanner input = new Scanner(System.in);
 
-        int number1 = random.nextInt(9) + 1;
-        int number2 = random.nextInt(9) + 1;
+        int number1 = random.nextInt(99) + 1;
+        int number2 = random.nextInt(99) + 1;
         int answer = 0;
 
         if(number1 < number2) {
