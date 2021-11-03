@@ -1,3 +1,15 @@
+/*
+
+    AJ Leichner
+    Douglas Lundin
+    CSC160-179 - Computer Science 1: Java
+    31 October 2021
+
+    A program that allows a main method to create a stock option and
+    also allows the main method to call upon various getters and setters.
+
+*/
+
 public class Stock {
 
     private String symbol, name;                // Variables
