@@ -20,12 +20,14 @@ public class HeadsTails {
 
         System.out.print("Enter a number between 0-511: ");
         int decimalN = input.nextInt();
-        String binaryString = Integer.toBinaryString(decimalN); 
+        String binaryString = Integer.toBinaryString(decimalN); // Puts the integer into a binary string
 
         char[] binaryArray = {'0', '0', '0', '0', '0', '0', '0', '0', '0'};
-        char[] tempBinaryArray = binaryString.toCharArray();
+        char[] tempBinaryArray = binaryString.toCharArray(); // Puts binaryString into a char array
 
-        System.out.println(tempBinaryArray);
+        // System.out.println(tempBinaryArray); // For testing only
+
+        // To put the binaryString into a binaryArray 
         if(tempBinaryArray.length != 9) {
             for(int i = 0, n = 9; i <= binaryArray.length - 1; i++, n--) {
                 if(tempBinaryArray.length <= i && tempBinaryArray.length >= n) {
@@ -33,11 +35,12 @@ public class HeadsTails {
                 }
             }
         } else if(tempBinaryArray.length > 9) {
-            System.out.println("Must enter a value within 0-511");
+            System.out.println("Must enter a value within 0-511"); // Out-of-bounds protection
         } else {
             binaryArray = tempBinaryArray;
         }
 
+        // Printing
         System.out.println(binaryArray[0] + " " + binaryArray[1] + " " + binaryArray[2]);
         System.out.println(binaryArray[3] + " " + binaryArray[4] + " " + binaryArray[5]);
         System.out.println(binaryArray[6] + " " + binaryArray[7] + " " + binaryArray[8]);
