@@ -31,7 +31,7 @@ public class HeadsTails {
         if(tempBinaryArray.length != 9) {
             for(int i = 0, n = 9; i <= binaryArray.length - 1; i++, n--) {
                 if(tempBinaryArray.length <= i && tempBinaryArray.length >= n) {
-                    binaryArray[n] = tempBinaryArray[n];
+                    binaryArray[n - 1] = tempBinaryArray[n - 1];
                 }
             }
         } else if(tempBinaryArray.length > 9) {
