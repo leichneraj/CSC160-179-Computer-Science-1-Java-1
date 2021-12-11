@@ -7,9 +7,9 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         introGame();
-        System.out.print("<===-- Player one, please anter your name --===>\n     > ");
+        System.out.print("<===-- Player one, please enter your name --===>\n     > ");
         Player player1 = new Player(0, input.nextLine());
-        System.out.print("\n\n<===-- Player two, please anter your name --===>\n     > ");
+        System.out.print("\n\n<===-- Player two, please enter your name --===>\n     > ");
         Player player2 = new Player(0, input.nextLine());
         
         System.out.println("\nWelcome to the game players '" + player1.getName() + "' and '" + player2.getName() + "'! The rules of the game are simple: Your goal is to reach a score of exactly 30. If you go over 30 you bust and restart at 0. In order to add to their score, a player may choose one of two dice that are rolled and add it to their score or choose both dice to be added to their score. Players each take turns, starting with player one, " + player1.getName() + "!\n\n");
@@ -31,9 +31,9 @@ public class Main {
             System.out.print("Would you like to keep one or both dice? (o/b)\n     > ");
             char answer = input.next().charAt(0);
             if(answer == 'o') {
-                System.out.print("Which dice would you like to keep? (" + dice1 + "/" + dice2 + ")\n     > ");
+                System.out.print("Which dice would you like to keep? (" + 1 + "/" + 2 + ")\n     > ");
                 int whichDie = input.nextInt();
-                if(whichDie == dice1) {
+                if(whichDie == 1) {
                     if(player1Turn) {
                         player1.addRoll(dice1);
                         displayScore(player1Turn, player1, player2);
@@ -41,7 +41,7 @@ public class Main {
                         player2.addRoll(dice1);
                         displayScore(player1Turn, player1, player2);
                     }
-                } else if(whichDie == dice2) {
+                } else if(whichDie == 2) {
                     if(player1Turn) {
                         player1.addRoll(dice2);
                         displayScore(player1Turn, player1, player2);
@@ -89,7 +89,7 @@ public class Main {
             else
                 player1Turn = true;
 
-            System.out.println("*-------------------------------*\n");
+            System.out.println("*------------------------------------------------------*\n");
 
         }   
 
