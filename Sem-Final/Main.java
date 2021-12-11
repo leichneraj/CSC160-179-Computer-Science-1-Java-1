@@ -1,3 +1,15 @@
+/*
+
+    AJ Leichner
+    Douglas Lundin
+    CSC160-179 - Computer Science 1: Java
+    10 December 2021
+
+    A program that plays the game '30 or bust' between two different players.
+    Each player takes turns to try and get an exact score of 30.
+
+*/
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -7,27 +19,30 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         introGame();
+        // Creating players
         System.out.print("<===-- Player one, please enter your name --===>\n     > ");
         Player player1 = new Player(0, input.nextLine());
         System.out.print("\n\n<===-- Player two, please enter your name --===>\n     > ");
         Player player2 = new Player(0, input.nextLine());
         
+        // Introduction to game
         System.out.println("\nWelcome to the game players '" + player1.getName() + "' and '" + player2.getName() + "'! The rules of the game are simple: Your goal is to reach a score of exactly 30. If you go over 30 you bust and restart at 0. In order to add to their score, a player may choose one of two dice that are rolled and add it to their score or choose both dice to be added to their score. Players each take turns, starting with player one, " + player1.getName() + "!\n\n");
         
         int dice1 = 0, dice2 = 0;
-
         Random random = new Random();
+        boolean player1Turn = true; // Used to tell which players turn the loop is on (true for player1, false for player2)
 
-        boolean player1Turn = true;
-        while ((player1.getScore() != 30) && (player2.getScore() != 30)) {
+        while ((player1.getScore() != 30) && (player2.getScore() != 30)) { // While loop for continuation of game
             displayTurn(player1Turn, player1, player2);
 
+            // Creates new random integers for the dice and prints the dice.
             dice1 = random.nextInt(6) + 1;
             printDie(dice1);
             dice2 = random.nextInt(6) + 1;
             printDie(dice2);
 
             System.out.println("<===-- You rolled "+ dice1 +" and "+ dice2 + " --===>\n");
+            // Score choosing/addition process
             System.out.print("Would you like to keep one or both dice? (o/b)\n     > ");
             char answer = input.next().charAt(0);
             if(answer == 'o') {
@@ -50,7 +65,7 @@ public class Main {
                         displayScore(player1Turn, player1, player2);
                     }
                 } else {
-                    System.out.println("Invalid input. Restart game.");
+                    System.out.println("Invalid input. Restart game."); // Stops game if the player enters an invalid input.
                     return;
                 }
             } else if(answer == 'b') {
@@ -62,29 +77,29 @@ public class Main {
                     displayScore(player1Turn, player1, player2);
                 }
             } else {
-                System.out.println("Invalid input. Restart game.");
+                System.out.println("Invalid input. Restart game."); // Stops game if the player enters an invalid input.
                 return;
             }
 
-            if(player1Turn) {
+            if(player1Turn) { // Checks if the current player has reached a score of 30 or exceeded 30
                 if(player1.getScore() == 30) {
                     displayWin();
                 }
-                else if (player1.getScore() > 30) {
+                else if (player1.getScore() > 30) { // Prints bust and resets score to 0
                     displayBust();
-                    player1.setScore(0);
+                    player1.setScore(0); 
                 }
             } else {
                 if(player2.getScore() == 30) {
                     displayWin();
                 }
-                else if (player2.getScore() > 30) {
+                else if (player2.getScore() > 30) { // Prints bust and resets score to 0
                     displayBust();
                     player2.setScore(0);
                 }
             }
 
-            if(player1Turn)
+            if(player1Turn) // Swithces which players' turn it is
                 player1Turn = false;
             else
                 player1Turn = true;
@@ -93,9 +108,11 @@ public class Main {
 
         }   
 
+        input.close();
+
     }
 
-        public static void introGame() {
+        public static void introGame() { // Introduces the game
             System.out.println("        *--------------------------------------------------*\n" +
                                 "        |  ===   ===   ===== ===    ===  =   =  ===  ====  |\n" +
                                 "        |     ] [  =]  [   ] [  ]   [  ] [   ] [      []   |\n" +
@@ -211,7 +228,7 @@ public class Main {
 
         }
 
-        public static void displayWin() {
+        public static void displayWin() { // If score of 30 is reached
 
             System.out.println( "*------------------------------------------------------*\n" +
                                 "| ==    == ===== =   =  ==  ==  == ==== ==    ==  |||| |\n" +
@@ -223,7 +240,7 @@ public class Main {
 
         }
 
-        public static void displayBust() {
+        public static void displayBust() { // If score over 30 is reached
 
             System.out.println( "*------------------------------*\n" +
                                 "|  ===  =   =  ===  ====  |||| |\n" +
